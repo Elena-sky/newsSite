@@ -78,11 +78,22 @@ class MainController extends BaseController
     }
 
     //View новости
-    public function adminaViewNews()
+    public function adminViewNews()
     {
         $news = \App\News::all();
-        return view('admin.news', ['news'=>$news]);
+        $category = Categories::getCategories();
+        return view('admin.news', ['news' => $news, 'category' => $category]);
     }
+
+    // View page добавления новой новости
+    public function adminViewAddNews()
+    {
+        $categories = Categories::getCategories();
+        return view('admin.newsAdd', ['categories'=> $categories]);
+    }
+
+
+
 
 
 }
