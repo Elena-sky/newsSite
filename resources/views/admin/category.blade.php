@@ -68,9 +68,19 @@
                                             <td>
                                                 <button type="button" class="btn btn-info">Info</button>
                                             </td>
-                                            <td><button type="button" class="btn btn-warning">Warning</button>
+                                            <td>
+                                                <a href="{{route('viewUpdateCategory', [$category->id])}}">
+                                                    <button type="button" class="btn btn-warning"><span
+                                                                class="glyphicon glyphicon-pencil"></span> Изменить
+                                                    </button>
+                                                </a>
                                             </td>
-                                            <td><button type="button" class="btn btn-danger">Danger</button>
+                                            <td>
+                                                <a href="{{route('actionDeleteCategory', [$category->id])}}">
+                                                    <button type="button" class="btn btn-danger"><span
+                                                                class="glyphicon glyphicon-remove"></span> Удалить
+                                                    </button>
+                                                </a>
                                             </td>
 
                                         </tr>

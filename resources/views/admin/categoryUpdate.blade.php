@@ -17,40 +17,41 @@
                 <li class="breadcrumb-item">
                     <a href="{{route('viewCategoryAdmin')}}">Управление категориями</a>
                 </li>
-                <li class="breadcrumb-item active">Добавить новую категорию</li>
+                <li class="breadcrumb-item active">Редактировать категорию</li>
             </ol>
             <!-- Area Chart Example-->
 
 
             <div class="container">
 
-                    {!! Form::model('', array('route' => array('actionAddCategory'))
-                    ) !!}
+                {!! Form::model($category, array('route' => array('actionSaveUpdateCategory'))
+                ) !!}
+                <input name="id" type="hidden" value="{{$category->id}}">
 
-                    <div class="form-group">
-                        {!! Form::label('categoryName', 'Название:') !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
-                        </div>
+                <div class="form-group">
+                    {!! Form::label('categoryName', 'Название:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::text('name', $category->name, ['class' => 'form-control']) !!}
                     </div>
+                </div>
 
-                    <div class="form-group ">
-                        {!! Form::label('productStatus', 'На сайте:') !!}
-                        <div class="col-sm-10">
-                            {!! Form::radio('status', 1, true) !!} Отображать
-                            {!! Form::radio('status', 0) !!} Не отображать
-                        </div>
+                <div class="form-group ">
+                    {!! Form::label('productStatus', 'На сайте:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::radio('status', 1) !!} Отображать
+                        {!! Form::radio('status', 0) !!} Не отображать
                     </div>
+                </div>
 
-                    <div class="form-group ">
-                        <div class="col-sm-offset-2 col-sm-10 btn btn-success">
-                            {!! Form::submit('Добавить категорию') !!}
-                        </div>
+                <div class="form-group ">
+                    <div class="col-sm-offset-2 col-sm-10 btn btn-success">
+                        {!! Form::submit('Добавить категорию') !!}
                     </div>
+                </div>
 
 
 
-                    {!! Form::close() !!}
+                {!! Form::close() !!}
 
                 @if (session('alert'))
                     <div class="alert alert-success">

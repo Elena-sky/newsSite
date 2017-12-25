@@ -75,7 +75,7 @@
                         <a href="{{route('viewCategoryAdmin')}}">Категории</a>
                     </li>
                     <li>
-                        <a href="register.html">Новости</a>
+                        <a href="{{route('newsView')}}">Новости</a>
                     </li>
                     <li>
                         <a href="forgot-password.html">Слайды</a>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Categories;
-use App\Goods;
+use App\News;
 use App\Sliders;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -29,6 +29,7 @@ class MainController extends BaseController
         return view('admin.index');
     }
 
+
     // View управление категориями
     public function adminViewCategoryPage()
     {
@@ -48,13 +49,40 @@ class MainController extends BaseController
     public function adminActionAdminAddCategory()
     {
         $data = $_POST;
-        dd($data);
-
         Categories::create($data);
-
-        return \redirect(route('actionAddCategory'))->with('alert', 'Категория добавлена!');
+        return \redirect(route('addCategoryView'))->with('alert', 'Категория добавлена!');
     }
 
+    // View редактирование категории
+    public function adminViewUpdateCategory($id)
+    {
+        $category = Categories::find($id);
+        return view('admin.categoryUpdate', ['category' => $category]);
+    }
+
+    // Action сохранить редактироование категории
+    public function adminActionSaveUpdateCategory()
+    {
+        $data = $_POST;
+        $categoryData = Categories::find($data['id']);
+        $categoryData->update($data);
+        return \redirect(route('viewCategoryAdmin'));
+    }
+
+    //Action удаление категории
+    public function adminActionCategoryDelete($id)
+    {
+        $categoryDelete = Categories::find($id);
+        $categoryDelete->delete();
+        return \redirect(route('viewCategoryAdmin'));
+    }
+
+    //View новости
+    public function adminaViewNews()
+    {
+        $news = \App\News::all();
+        return view('admin.news', ['news'=>$news]);
+    }
 
 
 }
