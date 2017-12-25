@@ -34,9 +34,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/news', 'MainController@adminViewNews')->name('newsView'); // Управление новостями
     Route::get('/news/view', 'MainController@adminViewAddNews')->name('viewAddNews'); // View page добавления новой новости
     Route::post('/news/add', 'MainController@adminActionAddNews')->name('actionAddNews'); //Добавление новой новости
-//
-//    Route::get('/product/update/{id}', 'AdminController@viewProductUpdate')->name('productUpdateView'); // Редактирование товара
+
+    Route::get('/news/update/{id}', 'MainController@adminViewNewsUpdate')->name('viewNewsUpdate'); // Редактирование новости
 //    Route::post('/product/update/save', 'AdminController@actionProductUpdateSave')->name('actionUpdateSave'); // Action редактирование товара
-//    Route::get('/product/delete/{id}', 'AdminController@actionProductDelete')->name('actionDeleteProduct'); // Action удаление товара
+    Route::get('/news/delete/{id}', 'MainController@adminActionNewsDelete')->name('actionNewsDelete'); // Action удаление  новости
 
 });

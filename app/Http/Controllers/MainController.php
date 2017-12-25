@@ -6,6 +6,7 @@ use App\Categories;
 use App\News;
 use App\Sliders;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -89,8 +90,58 @@ class MainController extends BaseController
     public function adminViewAddNews()
     {
         $categories = Categories::getCategories();
-        return view('admin.newsAdd', ['categories'=> $categories]);
+        return view('admin.newsAdd', ['categories' => $categories]);
     }
+
+    //Добавление новой новости
+    public function adminActionAddNews(Request $request)
+    {
+        $fileName = self::uploader($request);
+        $data = Input::except(['_method', '_token']);
+
+        $news = News::create($data);
+        $newsId = $news->id;
+
+        foreach ($fileName as $oneFile) {
+            $dataImages = ['filename' => $oneFile, 'news_id' => $newsId];
+
+            NewsImages::create($dataImages);
+        }
+        return \redirect(route('newsView'));
+    }
+
+    // Редактирование новости
+    public function adminViewNewsUpdate($id)
+    {
+        $category = Categories::getCategories();
+        $news = News::find($id);
+        $images = News::find($id)->newsImg;
+
+        return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images]);
+    }
+
+
+    //
+
+
+
+    // Action удаление  новости
+    public function adminActionNewsDelete($id)
+    {
+      $newsDelete = News::find($id);
+      //$newsDelete->newsImg()->delete();
+        $newsDelete->delete();
+
+        return \redirect(route('newsView'));
+    }
+
+
+
+
+
+
+
+
 
 
 

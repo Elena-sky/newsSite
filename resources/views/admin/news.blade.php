@@ -77,20 +77,20 @@
                                         {{--<td>--}}
                                             {{--<button type="button" class="btn btn-info">Info</button>--}}
                                         {{--</td>--}}
-                                        {{--<td>--}}
-                                            {{--<a href="{{route('viewUpdateCategory', [$oneNews->id])}}">--}}
-                                                {{--<button type="button" class="btn btn-warning"><span--}}
-                                                            {{--class="glyphicon glyphicon-pencil"></span> Изменить--}}
-                                                {{--</button>--}}
-                                            {{--</a>--}}
-                                        {{--</td>--}}
-                                        {{--<td>--}}
-                                            {{--<a href="{{route('actionDeleteCategory', [$oneNews->id])}}">--}}
-                                                {{--<button type="button" class="btn btn-danger"><span--}}
-                                                            {{--class="glyphicon glyphicon-remove"></span> Удалить--}}
-                                                {{--</button>--}}
-                                            {{--</a>--}}
-                                        {{--</td>--}}
+                                        <td>
+                                            <a href="{{route('viewNewsUpdate', [$oneNews->id])}}">
+                                                <button type="button" class="btn btn-warning"><span
+                                                            class="glyphicon glyphicon-pencil"></span> Изменить
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('actionNewsDelete', [$oneNews->id])}}">
+                                                <button type="button" class="btn btn-danger"><span
+                                                            class="glyphicon glyphicon-remove"></span> Удалить
+                                                </button>
+                                            </a>
+                                        </td>
 
                                     </tr>
                                 @endforeach
