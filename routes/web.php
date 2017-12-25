@@ -17,6 +17,12 @@ Route::get('/welcome', function () {
 });
 
 
+Route::get('/news/{id}', 'MainController@userNewsViewPage')->name('newsViewPage'); //обзор новости
+
+
+
+
+
 //Администрирование
 
 Route::group(['prefix' => 'admin'], function () {

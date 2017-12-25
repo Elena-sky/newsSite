@@ -21,7 +21,7 @@
                                         <div class="date">
 Дата                                        </div>
                                         <div class="title">
-                                            <a href="#">{{$news->name}}</a>
+                                            <a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a>
                                         </div>
                                     </li>
                                 @endforeach;

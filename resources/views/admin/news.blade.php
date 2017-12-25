@@ -74,9 +74,13 @@
                                         <td>{{$oneNews->description}}</td>
                                         <td>{{($oneNews->status)? 'Отображать':'Не отображать'}}</td>
                                         <td>{{$oneNews->created_at}}</td>
-                                        {{--<td>--}}
-                                            {{--<button type="button" class="btn btn-info">Info</button>--}}
-                                        {{--</td>--}}
+                                        <td>
+                                            <a href="{{route('newsViewPage', [$oneNews->id])}}">
+                                                <button type="button" class="btn btn-info"><span
+                                                            class="glyphicon glyphicon-pencil"></span> Просмотр
+                                                </button>
+                                            </a>
+                                        </td>
                                         <td>
                                             <a href="{{route('viewNewsUpdate', [$oneNews->id])}}">
                                                 <button type="button" class="btn btn-warning"><span

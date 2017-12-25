@@ -23,6 +23,22 @@ class MainController extends BaseController
         return view('index', ['categories' => $categories]);
     }
 
+    public function userNewsViewPage($id)
+    {
+       // $images = News::find($id)->newsImg;
+        $news = News::find($id);
+        return view('newsView', ['news'=>$news]);
+    }
+
+
+
+
+
+
+
+
+
+
 
     //Администрирование
     public function adminPageView()
@@ -124,27 +140,15 @@ class MainController extends BaseController
     //
 
 
-
     // Action удаление  новости
     public function adminActionNewsDelete($id)
     {
-      $newsDelete = News::find($id);
-      //$newsDelete->newsImg()->delete();
+        $newsDelete = News::find($id);
+        //$newsDelete->newsImg()->delete();
         $newsDelete->delete();
 
         return \redirect(route('newsView'));
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
