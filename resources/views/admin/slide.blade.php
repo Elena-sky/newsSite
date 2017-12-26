@@ -1,6 +1,7 @@
 @extends('admin.template')
 
 
+
 @section('content')
     <!-- Page Content -->
 
@@ -11,7 +12,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{route('adminPageView')}}">Админпанель</a>
                 </li>
-                <li class="breadcrumb-item active">Управление новостями</li>
+                <li class="breadcrumb-item active">Управление слайдерами</li>
             </ol>
 
             <div class="container">
@@ -20,9 +21,9 @@
 
 
                 <div class="container ">
-                    <a href="{{route('viewAddNews')}}">
+                    <a href="{{route('viewAddSlide')}}">
                         <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>
-                            Создать новую новость
+                            Создать новый с
                         </button>
                     </a>
                 </div>
@@ -32,7 +33,7 @@
 
 
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Список новостей
+                        <i class="fa fa-table"></i> Список 5 последних новостей в слайдере
                     </div>
                     <div class="card-body">
 
@@ -66,38 +67,38 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                @foreach($news as $oneNews)
-                                    <tr>
-                                        <td>{{$oneNews->id}}</td>
-                                        <td>{{$oneNews->categoryName()}}</td>
-                                        <td>{{$oneNews->name}}</td>
-                                        <td>{{$oneNews->description}}</td>
-                                        <td>{{($oneNews->status)? 'Отображать':'Не отображать'}}</td>
-                                        <td>{{$oneNews->created_at}}</td>
-                                        <td>
-                                            <a href="{{route('newsViewPage', [$oneNews->id])}}">
-                                                <button type="button" class="btn btn-info"><span
-                                                            class="glyphicon glyphicon-pencil"></span> Просмотр
-                                                </button>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="{{route('viewNewsUpdate', [$oneNews->id])}}">
-                                                <button type="button" class="btn btn-warning"><span
-                                                            class="glyphicon glyphicon-pencil"></span> Изменить
-                                                </button>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="{{route('actionNewsDelete', [$oneNews->id])}}">
-                                                <button type="button" class="btn btn-danger"><span
-                                                            class="glyphicon glyphicon-remove"></span> Удалить
-                                                </button>
-                                            </a>
-                                        </td>
+                                {{--@foreach($news as $oneNews)--}}
+                                    {{--<tr>--}}
+                                        {{--<td>{{$oneNews->id}}</td>--}}
+                                        {{--<td>{{$oneNews->category_id}}</td>--}}
+                                        {{--<td>{{$oneNews->name}}</td>--}}
+                                        {{--<td>{{$oneNews->description}}</td>--}}
+                                        {{--<td>{{($oneNews->status)? 'Отображать':'Не отображать'}}</td>--}}
+                                        {{--<td>{{$oneNews->created_at}}</td>--}}
+                                        {{--<td>--}}
+                                            {{--<a href="{{route('newsViewPage', [$oneNews->id])}}">--}}
+                                                {{--<button type="button" class="btn btn-info"><span--}}
+                                                            {{--class="glyphicon glyphicon-pencil"></span> Просмотр--}}
+                                                {{--</button>--}}
+                                            {{--</a>--}}
+                                        {{--</td>--}}
+                                        {{--<td>--}}
+                                            {{--<a href="{{route('viewNewsUpdate', [$oneNews->id])}}">--}}
+                                                {{--<button type="button" class="btn btn-warning"><span--}}
+                                                            {{--class="glyphicon glyphicon-pencil"></span> Изменить--}}
+                                                {{--</button>--}}
+                                            {{--</a>--}}
+                                        {{--</td>--}}
+                                        {{--<td>--}}
+                                            {{--<a href="{{route('actionNewsDelete', [$oneNews->id])}}">--}}
+                                                {{--<button type="button" class="btn btn-danger"><span--}}
+                                                            {{--class="glyphicon glyphicon-remove"></span> Удалить--}}
+                                                {{--</button>--}}
+                                            {{--</a>--}}
+                                        {{--</td>--}}
 
-                                    </tr>
-                                @endforeach
+                                    {{--</tr>--}}
+                                {{--@endforeach--}}
 
                                 </tbody>
                             </table>

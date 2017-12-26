@@ -29,6 +29,7 @@ Route::get('/category/{id}', 'MainController@userCategoryViewPage')->name('categ
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'MainController@adminPageView')->name('adminPageView'); // Админпанель
 
+    //Категории
     Route::get('/category', 'MainController@adminViewCategoryPage')->name('viewCategoryAdmin'); // View управление категориями
     Route::get('/category/add', 'MainController@adminAddCategoryView')->name('addCategoryView'); // View page добавление новой категории
     Route::post('/category/add/save', 'MainController@adminActionAdminAddCategory')->name('actionAddCategory'); // Action добавление категории
@@ -38,12 +39,16 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/category/delete/{id}', 'MainController@adminActionCategoryDelete')->name('actionDeleteCategory'); //Action удаление категории
 
-    Route::get('/news', 'MainController@adminViewNews')->name('newsView'); // Управление новостями
+    //Новости
+    Route::get('/news', 'MainController@adminViewNews')->name('newsView'); // View Управление новостями
     Route::get('/news/view', 'MainController@adminViewAddNews')->name('viewAddNews'); // View page добавления новой новости
-    Route::post('/news/add', 'MainController@adminActionAddNews')->name('actionAddNews'); //Добавление новой новости
+    Route::post('/news/add', 'MainController@adminActionAddNews')->name('actionAddNews'); // Action Добавление новой новости
 
-    Route::get('/news/update/{id}', 'MainController@adminViewNewsUpdate')->name('viewNewsUpdate'); // Редактирование новости
+    Route::get('/news/update/{id}', 'MainController@adminViewNewsUpdate')->name('viewNewsUpdate'); // View Редактирование новости
     Route::post('/news/update/save', 'MainController@adminActionNewsUpdateSave')->name('actionNewsUpdateSave'); // Action редактирование новости
     Route::get('/news/delete/{id}', 'MainController@adminActionNewsDelete')->name('actionNewsDelete'); // Action удаление  новости
+
+
+
 
 });

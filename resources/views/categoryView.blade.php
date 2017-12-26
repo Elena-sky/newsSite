@@ -11,19 +11,20 @@
             </div>
             <div class="col-sm-8 text-left">
                 <div class="center-part">
+                    <h2>{{$category->name}}</h2>
 
-                    @foreach (\App\Categories::limitNews($category->id) as $news)
-
+                    @foreach ($newsByCategory as $news)
                         <li>
                             <div class="date">
-                                Дата                                        </div>
+                                Дата
+                            </div>
                             <div class="title">
                                 <a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a>
                             </div>
                         </li>
                     @endforeach;
 
-
+                    {{$newsByCategory->links()}}
                 </div>
 
                 <hr>

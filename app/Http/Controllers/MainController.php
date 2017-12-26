@@ -24,8 +24,9 @@ class MainController extends BaseController
     public function index()
     {
         $categories = \App\Categories::all();
+        $lastNewsSlide = News::query()->orderBy('id', 'desc')->take(5)->get();
 
-        return view('index', ['categories' => $categories]);
+        return view('index', ['categories' => $categories, 'lastNewsSlide' => $lastNewsSlide]);
     }
 
     public function userNewsViewPage($id)
@@ -37,12 +38,10 @@ class MainController extends BaseController
 
     public function userCategoryViewPage($id)
     {
+        $category = Categories::find($id);
+        $newsByCategory = News::where('category_id', $id)->orderBy('id', 'desc')->paginate(5);
 
-        //$category = Categories::find($id);
-        $category = News::query()->where('category_id', $id);
-
-        return view('categoryView', ['category' => $category]);
-
+        return view('categoryView', ['newsByCategory' => $newsByCategory, 'category' => $category]);
     }
 
 
@@ -182,6 +181,17 @@ class MainController extends BaseController
 
         return \redirect(route('newsView'));
     }
+
+    // Получить картинку для слайда
+    public static function getNewsMainImage($id)
+    {
+        $news = News::find($id);
+
+        if(!$news) return false;
+        $firstImage = $news->newsImg[0];
+        return $firstImage->filename;
+    }
+
 
 
 }

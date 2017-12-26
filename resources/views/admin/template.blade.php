@@ -78,7 +78,7 @@
                         <a href="{{route('newsView')}}">Новости</a>
                     </li>
                     <li>
-                        <a href="forgot-password.html">Слайды</a>
+                        <a href="#">Слайды</a>
                     </li>
                     <li>
                         <a href="blank.html">Blank Page</a>

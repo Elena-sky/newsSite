@@ -18,4 +18,18 @@ class News extends Model
     {
         return $this->hasMany('App\NewsImages', 'news_id');
     }
+
+    public static function limitNewsSlide()
+    {
+        $data = News::query()->orderBy('id','desc')->take(5)->get();
+        return $data;
+        dd($data);
+    }
+
+    public function categoryName()
+    {
+        $category = Categories::find($this->category_id);
+        $name = (!empty($category)) ? $category->name : 'none' ;
+        return $name;
+    }
 }

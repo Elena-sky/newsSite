@@ -11,15 +11,66 @@
             </div>
             <div class="col-sm-8 text-left">
                 <div class="center-part">
+
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                            <li data-target="#myCarousel" data-slide-to="4"></li>
+                            <li data-target="#myCarousel" data-slide-to="5"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <?php $item_class = ' active'; ?>
+                            @foreach($lastNewsSlide as $news)
+                                <div class="item <?= $item_class ?>">
+
+                                    <?php $item_class = ''; /* убираем 'active' для следующих */ ?>
+                                    <div>
+                                        <div class="col-sm-6 col-sm-offset-2">
+                                            <h3><a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a></h3>
+                                        </div>
+
+                                        <div class="col-sm-4" >
+                                            @if(!empty($news->newsImg)):
+                                            <img style="width: 200px" src="{{ asset("/uploads/news/".$news->newsImg[0]->filename) }}" alt="">
+                                            @endif;
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+
                     @foreach(\App\Categories::all() as $category)
                         <div class="category">
                             <h3 class="text-normal"><a class="nav-link"
-                                                       href="{{route('categoryViewPage',['id' => $category->id])}}">{{$category->name}}</a></h3>
+                                                       href="{{route('categoryViewPage',['id' => $category->id])}}">{{$category->name}}</a>
+                            </h3>
                             <ul>
                                 @foreach (\App\Categories::limitNews($category->id) as $news)
                                     <li>
                                         <div class="date">
-Дата                                        </div>
+                                            {{$news->data}}
+                                        </div>
                                         <div class="title">
                                             <a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a>
                                         </div>
