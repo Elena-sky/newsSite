@@ -41,13 +41,9 @@ class MainController extends BaseController
         //$category = Categories::find($id);
         $category = News::query()->where('category_id', $id);
 
-        return view('categoryView', ['category' => $category] );
+        return view('categoryView', ['category' => $category]);
 
     }
-
-
-
-
 
 
     //Администрирование
@@ -107,8 +103,14 @@ class MainController extends BaseController
     //View новости
     public function adminViewNews()
     {
+//        $newsCat = News::find($id)->category();
+        // $newsCat = \App\News::find($id)->category();
+
+
         $news = \App\News::all();
+
         $category = Categories::getCategories();
+
         return view('admin.news', ['news' => $news, 'category' => $category]);
     }
 
@@ -147,8 +149,28 @@ class MainController extends BaseController
         return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images]);
     }
 
+    // Action редактирование новости
+    public function adminActionNewsUpdateSave(Request $request)
+    {
+        $path = '/news';  // Папка для загрузки картинок новости
+        $fileName = self::uploader($request, $path);
 
-    //
+
+        $data = Input::except(['_method', '_token']);
+        $newsData = News::find($data['id']);
+        $newsData->update($data);
+
+        $newsId = $newsData->id;
+
+        if ($fileName) {
+            foreach ($fileName as $onefile) {
+                $dataImages = ['filename' => $onefile, 'news_id' => $newsId];
+                NewsImages::create($dataImages);
+            }
+        }
+
+        return \redirect(route('newsView'));
+    }
 
 
     // Action удаление  новости

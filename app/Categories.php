@@ -18,7 +18,6 @@ class Categories extends Model
     public static function limitNews($id)
     {
         $data = News::query()->where('category_id', $id)->orderBy('id','desc')->take(5)->get();
-        //dd($data);
         return $data;
     }
 

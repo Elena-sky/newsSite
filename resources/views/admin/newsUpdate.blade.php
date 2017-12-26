@@ -19,7 +19,7 @@
 
             <div class="container">
 
-                {!! Form::model($news, array('route' => array('actionAddNews'), 'files' => true)
+                {!! Form::model($news, array('route' => array('actionNewsUpdateSave'), 'files' => true)
                 ) !!}
                 <input name="id" type="hidden" value="{{$news->id}}">
 
