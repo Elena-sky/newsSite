@@ -14,7 +14,7 @@ class News extends Model
         return $this->belongsTo('App\Categories', 'category_id');
     }
 
-    public function goodImg()
+    public function newsImg()
     {
         return $this->hasMany('App\NewsImages', 'news_id');
     }

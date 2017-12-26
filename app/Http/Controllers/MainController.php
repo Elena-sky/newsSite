@@ -30,9 +30,9 @@ class MainController extends BaseController
 
     public function userNewsViewPage($id)
     {
-        // $images = News::find($id)->newsImg;
+        $images = News::find($id)->newsImg;
         $news = News::find($id);
-        return view('newsView', ['news' => $news]);
+        return view('newsView', ['news' => $news, 'images' => $images]);
     }
 
     public function userCategoryViewPage($id)
@@ -122,7 +122,8 @@ class MainController extends BaseController
     //Добавление новой новости
     public function adminActionAddNews(Request $request)
     {
-        $fileName = self::uploader($request);
+        $path = '/news';  // Папка для загрузки картинок новости
+        $fileName = self::uploader($request, $path);
         $data = Input::except(['_method', '_token']);
 
         $news = News::create($data);
@@ -154,7 +155,7 @@ class MainController extends BaseController
     public function adminActionNewsDelete($id)
     {
         $newsDelete = News::find($id);
-        //$newsDelete->newsImg()->delete();
+        $newsDelete->newsImg()->delete();
         $newsDelete->delete();
 
         return \redirect(route('newsView'));
