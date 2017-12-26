@@ -25,15 +25,20 @@ class MainController extends BaseController
 
     public function userNewsViewPage($id)
     {
-       // $images = News::find($id)->newsImg;
+        // $images = News::find($id)->newsImg;
         $news = News::find($id);
-        return view('newsView', ['news'=>$news]);
+        return view('newsView', ['news' => $news]);
     }
 
+    public function userCategoryViewPage($id)
+    {
 
+        //$category = Categories::find($id);
+        $category = News::query()->where('category_id', $id);
 
+        return view('categoryView', ['category' => $category] );
 
-
+    }
 
 
 

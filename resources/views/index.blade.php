@@ -14,7 +14,7 @@
                     @foreach(\App\Categories::all() as $category)
                         <div class="category">
                             <h3 class="text-normal"><a class="nav-link"
-                                                       href="/category/{{$category->id}}">{{$category->name}}</a></h3>
+                                                       href="{{route('categoryViewPage',['id' => $category->id])}}">{{$category->name}}</a></h3>
                             <ul>
                                 @foreach (\App\Categories::limitNews($category->id) as $news)
                                     <li>

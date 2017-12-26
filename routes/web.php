@@ -19,6 +19,7 @@ Route::get('/welcome', function () {
 
 Route::get('/news/{id}', 'MainController@userNewsViewPage')->name('newsViewPage'); //обзор новости
 
+Route::get('/category/{id}', 'MainController@userCategoryViewPage')->name('categoryViewPage'); // обзор новостей в категории
 
 
 
