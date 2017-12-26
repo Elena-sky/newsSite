@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Categories;
 use App\News;
 use App\Sliders;
+use App\ImageUploader;
+use App\NewsImages;
+
+//use App\Http\Controllers\Input;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -13,7 +18,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class MainController extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ImageUploader;
 
 
     public function index()
