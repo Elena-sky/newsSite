@@ -47,7 +47,6 @@
                                     <th>Фирма</th>
                                     <th></th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tfoot>
@@ -56,7 +55,6 @@
                                     <th>Название</th>
                                     <th>Цена</th>
                                     <th>Фирма</th>
-                                    <th></th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -68,24 +66,20 @@
                                         <td>{{$advertising->name}}</td>
                                         <td>{{$advertising->prise}}</td>
                                         <td>{{$advertising->company}}</td>
-
-                                        {{--<td>--}}
-                                            {{--<button type="button" class="btn btn-info">Info</button>--}}
-                                        {{--</td>--}}
-                                        {{--<td>--}}
-                                            {{--<a href="{{route('viewUpdateCategory', [$category->id])}}">--}}
-                                                {{--<button type="button" class="btn btn-warning"><span--}}
-                                                            {{--class="glyphicon glyphicon-pencil"></span> Изменить--}}
-                                                {{--</button>--}}
-                                            {{--</a>--}}
-                                        {{--</td>--}}
-                                        {{--<td>--}}
-                                            {{--<a href="{{route('actionDeleteCategory', [$category->id])}}">--}}
-                                                {{--<button type="button" class="btn btn-danger"><span--}}
-                                                            {{--class="glyphicon glyphicon-remove"></span> Удалить--}}
-                                                {{--</button>--}}
-                                            {{--</a>--}}
-                                        {{--</td>--}}
+                                        <td>
+                                            <a href="{{route('viewAdvertisingUpdate', [$advertising->id])}}">
+                                                <button type="button" class="btn btn-warning"><span
+                                                            class="glyphicon glyphicon-pencil"></span> Изменить
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('actionAdvertisingDelete', [$advertising->id])}}">
+                                                <button type="button" class="btn btn-danger"><span
+                                                            class="glyphicon glyphicon-remove"></span> Удалить
+                                                </button>
+                                            </a>
+                                        </td>
 
                                     </tr>
                                 @endforeach

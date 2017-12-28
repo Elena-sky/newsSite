@@ -66,7 +66,11 @@
                                             <td>{{$category->name}}</td>
                                             <td>{{($category->status)? 'Отображать':'Не отображать'}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-info">Info</button>
+                                                <a href="{{route('categoryViewPage', [$category->id])}}">
+                                                    <button type="button" class="btn btn-info"><span
+                                                                class="glyphicon glyphicon-pencil"></span> Просмотр
+                                                    </button>
+                                                </a>
                                             </td>
                                             <td>
                                                 <a href="{{route('viewUpdateCategory', [$category->id])}}">

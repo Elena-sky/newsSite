@@ -197,10 +197,9 @@ class MainController extends BaseController
     //Управление рекламой
     public function adminViewAdvertising()
     {
+        $allAdvertising = Advertising::query()->orderBy('id', 'desc')->get();
 
-         $allAdvertising = Advertising::all();
-
-        return view('admin.advertising', ['allAdvertising'=> $allAdvertising]);
+        return view('admin.advertising', ['allAdvertising' => $allAdvertising]);
     }
 
     //View Добавление новой рекламы
@@ -213,14 +212,43 @@ class MainController extends BaseController
     //Action Добавление новой рекламы
     public function adminActionAddAdvertising()
     {
-
         $data = $_POST;
-
         Advertising::create($data);
-
 
         return \redirect(route('viewAdvertising'));
     }
+
+    //View редактирование рекламы
+    public function adminViewAdvertisingUpdate($id)
+    {
+        $advertising = Advertising::find($id);
+
+        return view('admin.advertisingUpdate', ['advertising' => $advertising]);
+    }
+
+    //Action редактирование рекламы
+    public function adminActionAdvertisingUpdateSave()
+    {
+        $data = $_POST;
+        $advertisingData = Advertising::find($data['id']);
+        $advertisingData->update($data);
+        return \redirect(route('viewAdvertising'));
+    }
+
+    //Action удаление рекламы
+    public function adminActionAdvertisingDelete($id)
+    {
+
+        $advertisingDelete = Advertising::find($id);
+        $advertisingDelete->delete();
+        return \redirect(route('viewAdvertising'));
+    }
+
+
+
+
+
+
 
 
 }
