@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Advertising;
 use App\Categories;
 use App\News;
 use App\Sliders;
@@ -187,11 +188,39 @@ class MainController extends BaseController
     {
         $news = News::find($id);
 
-        if(!$news) return false;
+        if (!$news) return false;
         $firstImage = $news->newsImg[0];
         return $firstImage->filename;
     }
 
+
+    //Управление рекламой
+    public function adminViewAdvertising()
+    {
+
+         $allAdvertising = Advertising::all();
+
+        return view('admin.advertising', ['allAdvertising'=> $allAdvertising]);
+    }
+
+    //View Добавление новой рекламы
+    public function adminViewAddAdvertising()
+    {
+
+        return view('admin.advertisingAdd');
+    }
+
+    //Action Добавление новой рекламы
+    public function adminActionAddAdvertising()
+    {
+
+        $data = $_POST;
+
+        Advertising::create($data);
+
+
+        return \redirect(route('viewAdvertising'));
+    }
 
 
 }

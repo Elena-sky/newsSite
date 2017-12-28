@@ -48,6 +48,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/news/update/save', 'MainController@adminActionNewsUpdateSave')->name('actionNewsUpdateSave'); // Action редактирование новости
     Route::get('/news/delete/{id}', 'MainController@adminActionNewsDelete')->name('actionNewsDelete'); // Action удаление  новости
 
+    //Реклама
+    Route::get('/advertising', 'MainController@adminViewAdvertising')->name('viewAdvertising'); //View Управление рекламой
+    Route::get('/advertising/add', 'MainController@adminViewAddAdvertising')->name('viewAddAdvertising'); //View добавление новой рекламы
+    Route::post('/advertising/add/save', 'MainController@adminActionAddAdvertising')->name('actionAddAdvertising'); // Action Добавление новой рекламы
 
 
 

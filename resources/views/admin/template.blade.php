@@ -78,7 +78,7 @@
                         <a href="{{route('newsView')}}">Новости</a>
                     </li>
                     <li>
-                        <a href="#">Слайды</a>
+                        <a href="{{route('viewAdvertising')}}">Реклама</a>
                     </li>
                     <li>
                         <a href="blank.html">Blank Page</a>
