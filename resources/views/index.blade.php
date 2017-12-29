@@ -9,6 +9,10 @@
                 <div class="well">
 
                     <p>{{$advertising->name}}</p>
+                    <br>
+                    {{$advertising->prise}}
+                    <br>
+                    <a href="{{$advertising->company}}">Купить можно здесь</a>
                 </div>
                 @endforeach
             </div>
@@ -101,6 +105,10 @@
                     <div class="well">
 
                         <p>{{$advertising->name}}</p>
+                        <br>
+                        {{$advertising->prise}}
+                        <br>
+                        <a href="{{$advertising->company}}">Купить можно здесь</a>
                     </div>
                 @endforeach
             </div>
