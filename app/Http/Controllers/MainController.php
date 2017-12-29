@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Advertising;
 use App\Categories;
 use App\News;
-use App\Sliders;
 use App\ImageUploader;
 use App\NewsImages;
 
@@ -24,10 +23,13 @@ class MainController extends BaseController
 
     public function index()
     {
+        $leftAdvertising = Advertising::query()->where('leftadvertising', '=', '1')->get();
+        $rightAdvertising = Advertising::query()->where('leftadvertising', '=', '0')->get();
+
         $categories = \App\Categories::all();
         $lastNewsSlide = News::query()->orderBy('id', 'desc')->take(5)->get();
 
-        return view('index', ['categories' => $categories, 'lastNewsSlide' => $lastNewsSlide]);
+        return view('index', ['categories' => $categories, 'lastNewsSlide' => $lastNewsSlide, 'leftAdvertising'=>$leftAdvertising, 'rightAdvertising' => $rightAdvertising]);
     }
 
     public function userNewsViewPage($id)

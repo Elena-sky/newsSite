@@ -5,12 +5,12 @@
     <div class="container-fluid text-center">
         <div class="row content">
             <div class="col-sm-2 ">
+                @foreach($leftAdvertising as $advertising)
                 <div class="well">
-                    <p>ADS</p>
+
+                    <p>{{$advertising->name}}</p>
                 </div>
-                <div class="well">
-                    <p>ADS</p>
-                </div>
+                @endforeach
             </div>
             <div class="col-sm-8 text-left">
                 <div class="center-part">
@@ -97,12 +97,12 @@
                 <p>Lorem ipsum...</p>
             </div>
             <div class="col-sm-2 ">
-                <div class="well">
-                    <p>ADS</p>
-                </div>
-                <div class="well">
-                    <p>ADS</p>
-                </div>
+                @foreach($rightAdvertising as $advertising)
+                    <div class="well">
+
+                        <p>{{$advertising->name}}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

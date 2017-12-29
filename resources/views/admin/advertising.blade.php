@@ -45,6 +45,7 @@
                                     <th>Название</th>
                                     <th>Цена</th>
                                     <th>Фирма</th>
+                                    <th>Левая колонка</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -55,6 +56,7 @@
                                     <th>Название</th>
                                     <th>Цена</th>
                                     <th>Фирма</th>
+                                    <th>Левая колонка</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -66,6 +68,8 @@
                                         <td>{{$advertising->name}}</td>
                                         <td>{{$advertising->prise}}</td>
                                         <td>{{$advertising->company}}</td>
+                                        <td>{{$advertising->leftadvertising}}</td>
+
                                         <td>
                                             <a href="{{route('viewAdvertisingUpdate', [$advertising->id])}}">
                                                 <button type="button" class="btn btn-warning"><span

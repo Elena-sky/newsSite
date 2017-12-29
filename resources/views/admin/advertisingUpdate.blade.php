@@ -46,10 +46,18 @@
                     </div>
                 </div>
 
+                <div class="form-group ">
+                    {!! Form::label('advertisingLeft', 'Левая колонка:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::radio('leftadvertising', 1) !!} Да
+                        {!! Form::radio('leftadvertising', 0) !!} Нет
+                    </div>
+                </div>
+
 
                 <div class="form-group ">
                     <div class="col-sm-offset-2 col-sm-10 btn btn-success">
-                        {!! Form::submit('Добавить рекламу') !!}
+                        {!! Form::submit('Сохранить') !!}
                     </div>
                 </div>
 
