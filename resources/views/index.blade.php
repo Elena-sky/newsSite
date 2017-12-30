@@ -1,20 +1,77 @@
 @extends('template')
 
 @section('content')
+    <style>
+        .myHover {
+            border: 1px;
+            border-color: #269abc;
+        }
 
+        .myHover:hover .price {
+            font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            color: red
+        }
+
+        .coupon {
+            display: none;
+            margin-right: -350px;
+            padding: 10px;
+            margin-top: 17px;
+            background: #f3f3f3;
+            height: 60px;
+            -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .myHover:hover .coupon {
+            display: block;
+            position: absolute;
+            top: 120px;
+            z-index: 9999;
+            width: 300px;
+            background-color: gold;
+        }
+
+        .discount {
+            display: none;
+        }
+        .myHover:hover .discount{
+            display:block;
+        }
+
+        .titleAd {
+            font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 10px;
+        }
+
+
+    </style>
     <div class="container-fluid text-center">
         <div class="row content">
             <div class="col-sm-2 ">
                 @foreach($leftAdvertising as $advertising)
-                <div class="well">
+                    <div class="well myHover">
+                        <p class="titleAd">{{$advertising->name}}</p>
+                        <br>
+                        <div class="price">Цена: {{$advertising->prise}} грн
+                            <div class="discount">Со скидкой - {{$advertising->prise*0.9}} грн</div>
+                        </div>
+                        <br>
 
-                    <p>{{$advertising->name}}</p>
-                    <br>
-                    {{$advertising->prise}}
-                    <br>
-                    <a href="{{$advertising->company}}">Купить можно здесь</a>
-                </div>
+                        <div><a href="{{$advertising->company}}">Купить можно здесь</a></div>
+                        <br>
+
+                        <div class="coupon">
+                            <span>Купон на скидку  - {{rand(989070, 6989898)}} – примените и получите скидку 10%</span>
+                        </div>
+                    </div>
+
+
                 @endforeach
+
+
             </div>
             <div class="col-sm-8 text-left">
                 <div class="center-part">
@@ -39,13 +96,17 @@
                                     <?php $item_class = ''; /* убираем 'active' для следующих */ ?>
                                     <div>
                                         <div class="col-sm-6 col-sm-offset-2">
-                                            <h3><a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a></h3>
+                                            <h3>
+                                                <a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a>
+                                            </h3>
                                         </div>
 
-                                        <div class="col-sm-4" >
-                                            @if(!empty($news->newsImg)):
-                                            <img style="width: 200px" src="{{ asset("/uploads/news/".$news->newsImg[0]->filename) }}" alt="">
-                                            @endif;
+                                        <div class="col-sm-4">
+                                            @if(!empty($news->newsImg))
+                                                <img style="width: 200px"
+                                                     src="{{ asset("/uploads/news/".$news->newsImg[0]->filename) }}"
+                                                     alt="">
+                                            @endif
                                         </div>
 
 
@@ -114,5 +175,7 @@
             </div>
         </div>
     </div>
+
+
 @endsection
 
