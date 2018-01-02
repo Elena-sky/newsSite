@@ -6,18 +6,11 @@
             border: 1px;
             border-color: #269abc;
         }
-
-        .myHover:hover .price {
-            font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
-            font-size: 15px;
-            color: red
-        }
-
         .coupon {
             display: none;
             margin-right: -350px;
             padding: 10px;
-            margin-top: 17px;
+            margin-top: 50px;
             background: #f3f3f3;
             height: 60px;
             -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
@@ -34,11 +27,18 @@
             background-color: gold;
         }
 
+        .myHover:hover .price {
+            font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            color: red
+        }
+
         .discount {
             display: none;
         }
-        .myHover:hover .discount{
-            display:block;
+
+        .myHover:hover .discount {
+            display: block;
         }
 
         .titleAd {
@@ -62,11 +62,11 @@
 
                         <div><a href="{{$advertising->company}}">Купить можно здесь</a></div>
                         <br>
-
                         <div class="coupon">
                             <span>Купон на скидку  - {{rand(989070, 6989898)}} – примените и получите скидку 10%</span>
                         </div>
                     </div>
+
 
 
                 @endforeach

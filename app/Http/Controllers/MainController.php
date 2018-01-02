@@ -34,8 +34,11 @@ class MainController extends BaseController
 
     public function userNewsViewPage($id)
     {
+
         $images = News::find($id)->newsImg;
         $news = News::find($id);
+        event('postHasViewed', $news);
+
         return view('newsView', ['news' => $news, 'images' => $images]);
     }
 

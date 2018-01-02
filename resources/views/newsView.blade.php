@@ -38,7 +38,10 @@
                         {{--alt="{{$image->id}}">--}}
                         {{--</div>--}}
                     </div>
-                    <div class="category">{{$news->category_id}}</div>
+                    <div class="category">Категория {{$news->category_id}}</div>
+                    <div class="viewCount">Эту новость смотрели {{$news->view_count}} раз</div>
+                    <div class="tags">Теги:</div>
+
 
 
                     <div id="disqus_thread"></div>
