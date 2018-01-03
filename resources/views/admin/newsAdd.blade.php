@@ -19,52 +19,59 @@
 
             <div class="container">
 
-                    {!! Form::model('', array('route' => array('actionAddNews'), 'files' => true)
-                    ) !!}
+                {!! Form::model('', array('route' => array('actionAddNews'), 'files' => true)
+                ) !!}
 
-                    <div class="form-group">
-                        {!! Form::label('newsName', 'Название:') !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('name', '', ['class' => 'form-control']) !!}
-                        </div>
+                <div class="form-group">
+                    {!! Form::label('newsName', 'Название:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::text('name', '', ['class' => 'form-control']) !!}
                     </div>
+                </div>
 
-                    <div class="form-group ">
-                        {!! Form::label('newsCategory', ' Категория товара:') !!}
-                        <div class="col-sm-10">
-                            {!! Form::select('category_id', $categories, ['class' => 'form-control'])!!}
-                        </div>
+                <div class="form-group ">
+                    {!! Form::label('newsCategory', ' Категория товара:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::select('category_id', $categories, ['class' => 'form-control'])!!}
                     </div>
+                </div>
 
-                    <div class="form-group ">
-                        {!! Form::label('newsImage', 'Изображение:') !!}
-                        <div class="col-sm-10">
-                            {!! Form::file('images[]', ['multiple' => true])!!}
-                        </div>
+                <div class="form-group ">
+                    {!! Form::label('newsImage', 'Изображение:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::file('images[]', ['multiple' => true])!!}
                     </div>
+                </div>
 
-                    <div class="form-group ">
-                        {!! Form::label('newsD', 'Отображение на странице:') !!}
-                        <div class="col-sm-10">
-                            {!! Form::radio('displaing', 1) !!} Отображать
-                            {!! Form::radio('displaing', 0) !!} Не отображать
-                        </div>
+                <div class="form-group ">
+                    {!! Form::label('newsD', 'Отображение на странице:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::radio('displaing', 1) !!} Отображать
+                        {!! Form::radio('displaing', 0) !!} Не отображать
                     </div>
+                </div>
 
-                    <div class="form-group ">
-                        {!! Form::label('newsDescription', 'Описание:') !!}
-                        <div class="col-sm-10">
-                            {!! Form::text('description', '', ['class' => 'form-control']) !!}
-                        </div>
+                <div class="form-group ">
+                    {!! Form::label('newsDescription', 'Описание:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::text('description', '', ['class' => 'form-control']) !!}
                     </div>
+                </div>
 
-                    <div class="form-group ">
-                        <div class="col-sm-offset-2 btn btn-success">
-                            {!! Form::submit('Создать новость') !!}
-                        </div>
+                <div class="form-group ">
+                    {!! Form::label('tags', 'Теги:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple']) !!}
                     </div>
+                </div>
 
-                    {!! Form::close() !!}
+                <div class="form-group ">
+                    <div class="col-sm-offset-2 btn btn-success">
+                        {!! Form::submit('Создать новость') !!}
+                    </div>
+                </div>
+
+                {!! Form::close() !!}
 
             </div>
             <!-- /.container-fluid-->

@@ -81,7 +81,7 @@
                         <a href="{{route('viewAdvertising')}}">Реклама</a>
                     </li>
                     <li>
-                        <a href="blank.html">Blank Page</a>
+                        <a href="{{route('viewTag')}}">Теги новостей</a>
                     </li>
                 </ul>
             </li>

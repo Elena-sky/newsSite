@@ -9,6 +9,7 @@ use App\ImageUploader;
 use App\NewsImages;
 
 //use App\Http\Controllers\Input;
+use App\Tag;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class MainController extends BaseController
         $categories = \App\Categories::all();
         $lastNewsSlide = News::query()->orderBy('id', 'desc')->take(5)->get();
 
-        return view('index', ['categories' => $categories, 'lastNewsSlide' => $lastNewsSlide, 'leftAdvertising'=>$leftAdvertising, 'rightAdvertising' => $rightAdvertising]);
+        return view('index', ['categories' => $categories, 'lastNewsSlide' => $lastNewsSlide, 'leftAdvertising' => $leftAdvertising, 'rightAdvertising' => $rightAdvertising]);
     }
 
     public function userNewsViewPage($id)
@@ -122,18 +123,24 @@ class MainController extends BaseController
     // View page добавления новой новости
     public function adminViewAddNews()
     {
+        $tags = \App\Tag::pluck('name');
         $categories = Categories::getCategories();
-        return view('admin.newsAdd', ['categories' => $categories]);
+        return view('admin.newsAdd', ['categories' => $categories, 'tags' => $tags]);
     }
 
     //Добавление новой новости
     public function adminActionAddNews(Request $request)
     {
+
         $path = '/news';  // Папка для загрузки картинок новости
         $fileName = self::uploader($request, $path);
         $data = Input::except(['_method', '_token']);
 
         $news = News::create($data);
+
+        $news->tags()->attach($request->input('tags'));
+
+
         $newsId = $news->id;
 
         foreach ($fileName as $oneFile) {
@@ -249,11 +256,12 @@ class MainController extends BaseController
         return \redirect(route('viewAdvertising'));
     }
 
-
-
-
-
-
+    //View Управление тегами
+    public function adminViewTag()
+    {
+        $tags = Tag::all();
+        return view('tags', ['tags' => $tags]);
+    }
 
 
 }

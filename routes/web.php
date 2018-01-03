@@ -53,6 +53,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/advertising/update/save', 'MainController@adminActionAdvertisingUpdateSave')->name('advertisingUpdateSave'); //Action редактирование рекламы
     Route::get('/advertising/delete/{id}', 'MainController@adminActionAdvertisingDelete')->name('actionAdvertisingDelete'); //Action удаление рекламы
 
+    //Теги
+    Route::get('/tag', 'MainCOntroller@adminViewTag')->name('viewTag'); //View Управление тегами
+
 
 
 });
