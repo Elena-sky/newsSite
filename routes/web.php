@@ -22,8 +22,6 @@ Route::get('/news/{id}', 'MainController@userNewsViewPage')->name('newsViewPage'
 Route::get('/category/{id}', 'MainController@userCategoryViewPage')->name('categoryViewPage'); // обзор новостей в категории
 
 
-
-
 //Администрирование
 
 Route::group(['prefix' => 'admin'], function () {
@@ -54,13 +52,16 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/advertising/delete/{id}', 'MainController@adminActionAdvertisingDelete')->name('actionAdvertisingDelete'); //Action удаление рекламы
 
     //Теги
-    Route::get('/tag', 'MainCOntroller@adminViewTag')->name('viewTag'); //View Управление тегами
+    Route::get('/tag', 'MainController@adminViewTag')->name('viewTag'); //View Управление тегами
+    Route::get('/tag/add', 'MainController@adminViewAddTag')->name('viewAddTag'); // View page добавления нового тега
+    Route::post('/tag/add/save', 'MainController@adminActionAddNTag')->name('actionAddTag'); // Action добавления нового тега
+    Route::get('/tag/update/{id}', 'MainController@adminViewUpdateTag')->name('viewUpdateTag'); //View редактирование тега
+    Route::post('/tag/update/save', 'MainController@adminActionUpdateTag')->name('actionUpdateTag'); //Action редактирование тега
+    Route::get('/tag/delete/{id}', 'MainController@adminActionTagDelete')->name('actionTagDelete'); //Action удаление тега
 
 
 
 });
-Auth::routes(
-
-);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

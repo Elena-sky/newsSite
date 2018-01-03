@@ -260,8 +260,43 @@ class MainController extends BaseController
     public function adminViewTag()
     {
         $tags = Tag::all();
-        return view('tags', ['tags' => $tags]);
+        return view('admin.tags', ['tags' => $tags]);
     }
 
+    // View page добавления нового тега
+    public function adminViewAddTag()
+    {
+        return view('admin.tagsAdd');
+    }
 
+    // Action добавления нового тега
+    public function adminActionAddNTag()
+    {
+        $data = $_POST;
+        Tag::create($data);
+        return \redirect(route('viewTag'));
+    }
+
+    //View редактирование тега
+    public function adminViewUpdateTag($id)
+    {
+        $tag = Tag::find($id);
+        return view('admin.tagsUpdate', ['tag' => $tag]);
+    }
+
+    //Action редактирование рекламы
+    public function adminActionUpdateTag() {
+        $data = $_POST;
+        $tagData = Tag::find($data['id']);
+        $tagData->update($data);
+        return \redirect(route('viewTag'));
+    }
+
+    //Action удаление тега
+    public function adminActionTagDelete($id) {
+        $tag = Tag::find($id);
+        $tag->delete();
+
+        return \redirect(route('viewTag'));
+    }
 }

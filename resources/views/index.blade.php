@@ -102,7 +102,8 @@
                                         </div>
 
                                         <div class="col-sm-4">
-                                            @if(!empty($news->newsImg))
+                                            @if(!empty($news->newsImg) && isset($news->newsImg[0]))
+
                                                 <img style="width: 200px"
                                                      src="{{ asset("/uploads/news/".$news->newsImg[0]->filename) }}"
                                                      alt="">
