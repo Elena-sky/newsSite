@@ -21,7 +21,7 @@
 
                 {!! Form::model('', array('route' => array('actionAddNews'), 'files' => true)
                 ) !!}
-
+                {{ csrf_field() }}
                 <div class="form-group">
                     {!! Form::label('newsName', 'Название:') !!}
                     <div class="col-sm-10">

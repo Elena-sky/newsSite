@@ -73,6 +73,13 @@
                 </div>
 
                 <div class="form-group ">
+                    {!! Form::label('tag_list', 'Теги:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::select('tag_list[]', $tags, null, ['class' => 'form-control', 'multiple']) !!}
+                    </div>
+                </div>
+
+                <div class="form-group ">
                     <div class="col-sm-offset-2 btn btn-success">
                         {!! Form::submit('Сохранить') !!}
                     </div>

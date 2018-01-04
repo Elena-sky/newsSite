@@ -39,8 +39,10 @@ class MainController extends BaseController
         $images = News::find($id)->newsImg;
         $news = News::find($id);
         event('postHasViewed', $news);
+        $newsTag = \App\Tag::pluck('name');
 
-        return view('newsView', ['news' => $news, 'images' => $images]);
+
+        return view('newsView', ['news' => $news, 'images' => $images, 'newsTag' => $newsTag]);
     }
 
     public function userCategoryViewPage($id)
@@ -123,9 +125,12 @@ class MainController extends BaseController
     // View page добавления новой новости
     public function adminViewAddNews()
     {
-        $tags = \App\Tag::pluck('name');
+        $tags = \App\Tag::all();//pluck('name');
+        foreach ($tags as $tag) {
+            $preparedTags[$tag['id']] =  $tag['name'];
+        }
         $categories = Categories::getCategories();
-        return view('admin.newsAdd', ['categories' => $categories, 'tags' => $tags]);
+        return view('admin.newsAdd', ['categories' => $categories, 'tags' => $preparedTags]);
     }
 
     //Добавление новой новости
@@ -137,16 +142,16 @@ class MainController extends BaseController
         $data = Input::except(['_method', '_token']);
 
         $news = News::create($data);
-
         $news->tags()->attach($request->input('tags'));
-
 
         $newsId = $news->id;
 
-        foreach ($fileName as $oneFile) {
-            $dataImages = ['filename' => $oneFile, 'news_id' => $newsId];
+        if (!empty($fileName)) {
+            foreach ($fileName as $oneFile) {
+                $dataImages = ['filename' => $oneFile, 'news_id' => $newsId];
 
-            NewsImages::create($dataImages);
+                NewsImages::create($dataImages);
+            }
         }
         return \redirect(route('newsView'));
     }

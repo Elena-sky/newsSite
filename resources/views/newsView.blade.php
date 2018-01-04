@@ -40,8 +40,18 @@
                     </div>
                     <div class="category">Категория {{$news->category_id}}</div>
                     <div class="viewCount">Эту новость смотрели {{$news->view_count}} раз</div>
-                    <div class="tags">Теги:</div>
+                    <div class="tags">
+                        @unless($newsTag->isEmpty())
+                            <h5>Теги:</h5>
+                            <ul>
+                                @foreach($newsTag as $tag)
+                                    <li>{{$tag}}</li>
 
+                                @endforeach
+                            </ul>
+
+                        @endunless
+                    </div>
 
 
                     <div id="disqus_thread"></div>
@@ -56,15 +66,15 @@
                          this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                          };
                          */
-                        (function() { // DON'T EDIT BELOW THIS LINE
+                        (function () { // DON'T EDIT BELOW THIS LINE
                             var d = document, s = d.createElement('script');
                             s.src = 'https://newssite-2.disqus.com/embed.js';
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();
                     </script>
-                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                            powered by Disqus.</a></noscript>
 
 
                 </div>

@@ -39,4 +39,9 @@ class News extends Model
 
     }
 
+    public function getTagsAttribute()
+    {
+        return $this->tags()->pluck('id');
+    }
+
 }
