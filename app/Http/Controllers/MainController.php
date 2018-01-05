@@ -59,11 +59,12 @@ class MainController extends BaseController
     {
         $tag = Tag::find($id);
 //не доделанно
-        $newsByTag = $tag->news();
+        $newsByTag = NewsTags::news();
+dd($newsByTag);
         foreach ($newsByTag as $item){
             dd($item);
         }
-        return view('tagView', ['newsByTag' => $newsByTag]);
+        return view('tagView', ['tag'=>$tag, 'newsByTag' => $newsByTag]);
     }
 
 
@@ -153,8 +154,9 @@ class MainController extends BaseController
         $data = Input::except(['_method', '_token']);
 
         $news = News::create($data);
-        $news->tags()->attach($request->input('tags'));
 
+        //не работает
+        $news->tags()->attach($request->input('tagsPool'));
         $newsId = $news->id;
 
         if (!empty($fileName)) {
@@ -175,6 +177,7 @@ class MainController extends BaseController
         $images = News::find($id)->newsImg;
 
         $preparedTags = Tag::getTagList();
+        //dd($preparedTags);
 
         return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images, 'preparedTags' =>$preparedTags]);
     }
@@ -186,7 +189,8 @@ class MainController extends BaseController
         $fileName = self::uploader($request, $path);
 
 
-        $data = Input::except(['_method', '_token']);
+        $data = Input::except(['_method', '_token', 'tagsPool']);
+        $tags = Input::get('tagsPool');//array tags
         $newsData = News::find($data['id']);
         $newsData->update($data);
 

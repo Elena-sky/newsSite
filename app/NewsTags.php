@@ -8,7 +8,7 @@ class NewsTags extends Model
 {
     protected $table = 'news_tag';
     protected $fillable = ['news_id', 'tag_id', 'created_at', 'updated_at'];
-
+    protected $primaryKey = 'news_id';
 
     public function tags()
     {
@@ -19,4 +19,6 @@ class NewsTags extends Model
     {
         return $this->belongsToMany('App\News')->withTimestamps();
     }
+
+
 }

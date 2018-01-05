@@ -75,7 +75,7 @@
                 <div class="form-group ">
                     {!! Form::label('tags', 'Теги:') !!}
                     <div class="col-sm-10">
-                        {!! Form::select('tags[]', $preparedTags, null, ['class' => 'form-control', 'multiple']) !!}
+                        {!! Form::select('tagsPool[]', $preparedTags, null, ['class' => 'form-control', 'multiple']) !!}
                     </div>
                 </div>
 

@@ -20,8 +20,18 @@
             </div>
             <div class="col-sm-8 text-left">
                 <div class="center-part">
+                    <h2>Все новости по : {{$tag->name}}</h2>
 
-
+                    @foreach ($newsByTag as $news)
+                        <li>
+                            <div class="date">
+                                Дата
+                            </div>
+                            <div class="title">
+                                <a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a>
+                            </div>
+                        </li>
+                    @endforeach
 
 
                 </div>

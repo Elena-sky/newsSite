@@ -68,13 +68,13 @@
                                         <td>{{$tag->name}}</td>
                                         <td>{{$tag->created_at}}</td>
 
-                                        {{--<td>--}}
-                                            {{--<a href="{{route('newsViewPage', [$oneNews->id])}}">--}}
-                                                {{--<button type="button" class="btn btn-info"><span--}}
-                                                            {{--class="glyphicon glyphicon-pencil"></span> Просмотр--}}
-                                                {{--</button>--}}
-                                            {{--</a>--}}
-                                        {{--</td>--}}
+                                        <td>
+                                            <a href="{{route('tagPage', [$tag->id])}}">
+                                                <button type="button" class="btn btn-info"><span
+                                                            class="glyphicon glyphicon-pencil"></span> Просмотр
+                                                </button>
+                                            </a>
+                                        </td>
                                         <td>
                                             <a href="{{route('viewUpdateTag', [$tag->id])}}">
                                                 <button type="button" class="btn btn-warning"><span

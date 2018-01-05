@@ -22,7 +22,7 @@
                                 <a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a>
                             </div>
                         </li>
-                    @endforeach;
+                    @endforeach
 
                     {{$newsByCategory->links()}}
                 </div>

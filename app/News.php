@@ -35,8 +35,7 @@ class News extends Model
 
     public function tags()
     {
-        //return $this->belongsToMany('App\Tag', 'news_tag', 'news_id');
-        return $this->hasMany('App\NewsTags','news_id', 'id');
+        return $this->belongsToMany('App\Tag', 'news_tag', 'news_id');
 
     }
 
