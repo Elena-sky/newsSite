@@ -35,13 +35,23 @@ class News extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('App\Tag', 'news_tag', 'news_id');
+        //return $this->belongsToMany('App\Tag', 'news_tag', 'news_id');
+        return $this->hasMany('App\NewsTags','news_id', 'id');
 
     }
 
     public function getTagsAttribute()
     {
         return $this->tags()->pluck('id');
+    }
+
+    public function getPreparedTagsList()
+    {
+        $newsTag = NewsTags::query()
+            ->where('news_id', $this->id)
+            ->pluck('tag_id');
+        $preparedList = Tag::getTagList($newsTag);
+        return $preparedList;
     }
 
 }

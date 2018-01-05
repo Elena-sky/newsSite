@@ -73,9 +73,9 @@
                 </div>
 
                 <div class="form-group ">
-                    {!! Form::label('tag_list', 'Теги:') !!}
+                    {!! Form::label('tags', 'Теги:') !!}
                     <div class="col-sm-10">
-                        {!! Form::select('tag_list[]', $tags, null, ['class' => 'form-control', 'multiple']) !!}
+                        {!! Form::select('tags[]', $preparedTags, null, ['class' => 'form-control', 'multiple']) !!}
                     </div>
                 </div>
 

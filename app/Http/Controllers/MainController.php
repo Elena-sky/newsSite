@@ -9,6 +9,7 @@ use App\ImageUploader;
 use App\NewsImages;
 
 //use App\Http\Controllers\Input;
+use App\NewsTags;
 use App\Tag;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -40,7 +41,7 @@ class MainController extends BaseController
         $news = News::find($id);
         event('postHasViewed', $news);
 
-        $preparedList = Tag::getTegList();
+        $preparedList = $news->getPreparedTagsList();
 
         return view('newsView', ['news' => $news, 'images' => $images, 'newsTag' => $preparedList]);
     }
@@ -51,6 +52,18 @@ class MainController extends BaseController
         $newsByCategory = News::where('category_id', $id)->orderBy('id', 'desc')->paginate(5);
 
         return view('categoryView', ['newsByCategory' => $newsByCategory, 'category' => $category]);
+    }
+
+    // обзор всех статей по 1 тегу
+    public function userTagPage($id)
+    {
+        $tag = Tag::find($id);
+//не доделанно
+        $newsByTag = $tag->news();
+        foreach ($newsByTag as $item){
+            dd($item);
+        }
+        return view('tagView', ['newsByTag' => $newsByTag]);
     }
 
 
@@ -125,7 +138,7 @@ class MainController extends BaseController
     // View page добавления новой новости
     public function adminViewAddNews()
     {
-        $preparedTags = Tag::getTegList();
+        $preparedTags = Tag::getTagList();
 
         $categories = Categories::getCategories();
         return view('admin.newsAdd', ['categories' => $categories, 'tags' => $preparedTags]);
@@ -161,7 +174,9 @@ class MainController extends BaseController
         $news = News::find($id);
         $images = News::find($id)->newsImg;
 
-        return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images]);
+        $preparedTags = Tag::getTagList();
+
+        return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images, 'preparedTags' =>$preparedTags]);
     }
 
     // Action редактирование новости
@@ -288,7 +303,8 @@ class MainController extends BaseController
     }
 
     //Action редактирование рекламы
-    public function adminActionUpdateTag() {
+    public function adminActionUpdateTag()
+    {
         $data = $_POST;
         $tagData = Tag::find($data['id']);
         $tagData->update($data);
@@ -296,7 +312,8 @@ class MainController extends BaseController
     }
 
     //Action удаление тега
-    public function adminActionTagDelete($id) {
+    public function adminActionTagDelete($id)
+    {
         $tag = Tag::find($id);
         $tag->delete();
 

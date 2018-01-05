@@ -21,7 +21,7 @@ Route::get('/news/{id}', 'MainController@userNewsViewPage')->name('newsViewPage'
 
 Route::get('/category/{id}', 'MainController@userCategoryViewPage')->name('categoryViewPage'); // обзор новостей в категории
 
-Route::get('/news/tag/{id}','MainController@userTagPage')->name('tagPage');// обзор всех статей по 1 тегу
+Route::get('/news/tag/{id}','MainController@userTagPage')->name('tagPage'); // обзор всех статей по 1 тегу
 
 
 //Администрирование
