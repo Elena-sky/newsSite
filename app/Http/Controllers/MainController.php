@@ -39,10 +39,10 @@ class MainController extends BaseController
         $images = News::find($id)->newsImg;
         $news = News::find($id);
         event('postHasViewed', $news);
-        $newsTag = \App\Tag::pluck('name');
 
+        $preparedList = Tag::getTegList();
 
-        return view('newsView', ['news' => $news, 'images' => $images, 'newsTag' => $newsTag]);
+        return view('newsView', ['news' => $news, 'images' => $images, 'newsTag' => $preparedList]);
     }
 
     public function userCategoryViewPage($id)
@@ -125,10 +125,8 @@ class MainController extends BaseController
     // View page добавления новой новости
     public function adminViewAddNews()
     {
-        $tags = \App\Tag::all();//pluck('name');
-        foreach ($tags as $tag) {
-            $preparedTags[$tag['id']] =  $tag['name'];
-        }
+        $preparedTags = Tag::getTegList();
+
         $categories = Categories::getCategories();
         return view('admin.newsAdd', ['categories' => $categories, 'tags' => $preparedTags]);
     }

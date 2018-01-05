@@ -41,16 +41,15 @@
                     <div class="category">Категория {{$news->category_id}}</div>
                     <div class="viewCount">Эту новость смотрели {{$news->view_count}} раз</div>
                     <div class="tags">
-                        @unless($newsTag->isEmpty())
+                        @if(!empty($newsTag))
                             <h5>Теги:</h5>
                             <ul>
-                                @foreach($newsTag as $tag)
-                                    <li>{{$tag}}</li>
-
+                                @foreach($newsTag as $id => $tag)
+                                    <li><a href="{{route('tagPage', [$id])}}">{{$tag}}</a></li>
                                 @endforeach
                             </ul>
 
-                        @endunless
+                        @endif
                     </div>
 
 
