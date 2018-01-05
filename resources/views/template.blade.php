@@ -13,6 +13,11 @@
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="{{asset('/js/jquery.cookie.js')}}"></script>
+    <link href="{{asset('/css/otherCss.css')}}" rel="stylesheet">
+    <script src="{{asset('/js/otherJs.js')}}"></script>
+
+
+    {{--<script src="//yandex.st/jquery/cookie/1.0/jquery.cookie.min.js"></script>--}}
 
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
