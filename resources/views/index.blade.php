@@ -6,6 +6,7 @@
             border: 1px;
             border-color: #269abc;
         }
+
         .coupon {
             display: none;
             margin-right: -350px;
@@ -75,6 +76,66 @@
             </div>
             <div class="col-sm-8 text-left">
                 <div class="center-part">
+                    <style>
+                        #bg_popup{
+                            position: fixed;
+                            z-index: 99999;
+                            background: rgba(0, 0, 0, 0.8);
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            display: none;
+                        }
+
+                        #popup {
+                            background:#fff;
+                            width: 350px;
+                            margin: 25% auto;
+                            padding: 5px 20px;
+                            position: relative;}
+
+                        .close{
+                            display:block;
+                            position:absolute;
+                            top:5px;
+                            right:5px;
+                            width:20px;
+                            height:20px;
+                            color:#555;
+                            background:#1BA600;
+                            cursor:pointer;}
+                    </style>
+
+                    <div>
+                        <div id="bg_popup">
+                            <div id="popup">
+                                <a id="setCookie" class="close" href="#" title="Закрыть"
+                                   onclick="document.getElementById('bg_popup').style.display='none'; return false;">X</a>
+                                <h1>Подписка на обновления</h1>
+
+                                <p>Разрешите сайту *** отправлять вам уведомления о выходе новых статей</p>
+                            </div>
+                        </div>
+                    </div>
+
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+                                $("#setCookie").click(function () {
+                                    $.cookie("popup", "24house", {expires: 0} );
+                                    $("#bg_popup").hide();
+                                });
+
+                                if ( $.cookie("popup") == null )
+                                {
+                                    setTimeout(function(){
+                                        $("#bg_popup").show();
+                                    }, 15000)
+                                }
+                                else { $("#bg_popup").hide();
+                                }
+                            });
+                    </script>
 
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->

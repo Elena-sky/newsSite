@@ -58,12 +58,10 @@ class MainController extends BaseController
     public function userTagPage($id)
     {
         $tag = Tag::find($id);
-//не доделанно
         $newsByTag = NewsTags::getNewsByTag($id);
 
-        return view('tagView', ['tag'=>$tag, 'newsByTag' => $newsByTag]);
+        return view('tagView', ['tag' => $tag, 'newsByTag' => $newsByTag]);
     }
-
 
     //Администрирование
     public function adminPageView()
@@ -179,7 +177,7 @@ class MainController extends BaseController
 
         $news_tagId = $news->getTagsAttribute();
 
-        return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images, 'preparedTags' =>$preparedTags, 'newsTagName' => $newsTagName, 'news_tagId' => $news_tagId]);
+        return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images, 'preparedTags' => $preparedTags, 'newsTagName' => $newsTagName, 'news_tagId' => $news_tagId]);
     }
 
     // Action редактирование новости
