@@ -155,7 +155,6 @@ dd($newsByTag);
 
         $news = News::create($data);
 
-        //не работает
         $news->tags()->attach($request->input('tagsPool'));
         $newsId = $news->id;
 
@@ -177,9 +176,13 @@ dd($newsByTag);
         $images = News::find($id)->newsImg;
 
         $preparedTags = Tag::getTagList();
-        //dd($preparedTags);
 
-        return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images, 'preparedTags' =>$preparedTags]);
+        event('postHasViewed', $news);
+        $newsTagName = $news->getPreparedTagsList();
+
+        $news_tagId = $news->getTagsAttribute();
+
+        return view('admin.newsUpdate', ['news' => $news, 'category' => $category, 'images' => $images, 'preparedTags' =>$preparedTags, 'newsTagName' => $newsTagName, 'news_tagId' => $news_tagId]);
     }
 
     // Action редактирование новости

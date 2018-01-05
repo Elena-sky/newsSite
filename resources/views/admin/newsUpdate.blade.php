@@ -73,9 +73,21 @@
                 </div>
 
                 <div class="form-group ">
-                    {!! Form::label('tags', 'Теги:') !!}
+                    {!! Form::label('currentTags', 'Текущие Теги:') !!}
                     <div class="col-sm-10">
-                        {!! Form::select('tagsPool[]', $preparedTags, null, ['class' => 'form-control', 'multiple']) !!}
+                        @if(!empty($newsTagName))
+                            @foreach($newsTagName as $id => $tag)
+                                {{$tag}} ,
+                            @endforeach
+                        @endif
+
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    {!! Form::label('tags', 'Добавить еще Теги:') !!}
+                    <div class="col-sm-10">
+                        {!! Form::select('tagsPool[]', $preparedTags,  $news_tagId, ['class' => 'form-control', 'multiple']) !!}
                     </div>
                 </div>
 
