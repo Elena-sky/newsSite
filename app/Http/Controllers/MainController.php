@@ -59,11 +59,8 @@ class MainController extends BaseController
     {
         $tag = Tag::find($id);
 //не доделанно
-        $newsByTag = NewsTags::news();
-dd($newsByTag);
-        foreach ($newsByTag as $item){
-            dd($item);
-        }
+        $newsByTag = NewsTags::getNewsByTag($id);
+
         return view('tagView', ['tag'=>$tag, 'newsByTag' => $newsByTag]);
     }
 

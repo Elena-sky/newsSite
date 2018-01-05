@@ -20,5 +20,12 @@ class NewsTags extends Model
         return $this->belongsToMany('App\News')->withTimestamps();
     }
 
-
+    public static function getNewsByTag($id)
+    {
+        $data = NewsTags::query()
+            ->where('tag_id', $id)
+            ->pluck('news_id');
+        $newsList = News::find($data);
+        return $newsList;
+    }
 }

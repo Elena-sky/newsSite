@@ -21,9 +21,10 @@ class News extends Model
 
     public static function limitNewsSlide()
     {
-        $data = News::query()->orderBy('id', 'desc')->take(5)->get();
+        $data = News::query()
+            ->orderBy('id', 'desc')
+            ->take(5)->get();
         return $data;
-        dd($data);
     }
 
     public function categoryName()
@@ -52,5 +53,6 @@ class News extends Model
         $preparedList = Tag::getTagList($newsTag);
         return $preparedList;
     }
+
 
 }
