@@ -197,6 +197,8 @@ dd($newsByTag);
         $newsData = News::find($data['id']);
         $newsData->update($data);
 
+        $newsData->tags()->sync($tags);
+
         $newsId = $newsData->id;
 
         if ($fileName) {
