@@ -56,6 +56,55 @@
                 height: auto;
             }
         }
+        /* here */
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -1px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+
+        .dropdown-submenu:hover>.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu>a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+
+        .dropdown-submenu:hover>a:after {
+            border-left-color: #fff;
+        }
+
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+
+        .dropdown-submenu.pull-left>.dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
     </style>
 </head>
 <body>
@@ -76,33 +125,64 @@
                 <li><a href="#">About</a></li>
                 <li><a href="#">Projects</a></li>
                 <li><a href="#">Contact</a></li>
-                <li class="dropdown">
-                    <button class="btn  dropdown-toggle" data-toggle="dropdown">Выпадающее меню
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
+                <li>
+                    <div class="dropdown">
+                        <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" >
+                            Dropdown <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            @foreach($parentMenu as $one)
+                                @if(!empty($one['children']))
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">{{$one['name']}}</a>
+                                        <ul class="dropdown-menu">
+                                    @foreach($one['children'] as $two )
+                                                @if(!empty($two['children']))
+                                                    <li class="dropdown-submenu">
+                                                        <a href="#">{{$two['name']}}</a>
+                                                        <ul class="dropdown-menu">
+                                                    @foreach($two['children'] as $three )
+                                                        <li><a href="#">{{$three['name']}}</a></li>
+                                                    @endforeach
+                                                        </ul>
+                                                @endif
+                                    @endforeach
+                                            </ul>
+                                        </li>
+                                    <li class="divider"></li>
+                                @else
+                                    <li><a href="#">{{$one['name']}}</a></li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                </li>
+                {{--<li><a href="#">Выпадающее меню <span class="caret"></span></a>
+                    <ul>
 
                         @foreach($parentMenu as $array =>$one)
                             <li><a href="#">{{$one['name']}}</a></li>
-                            <ul class="dropdown-menu">
-
                             @if(!empty($one['children']))
 
-                                    @foreach($one['children'] as $two )
-                                        <li><a href="#">{{$two['name']}}</a></li>
-                                        @if(!empty($two['children']))
-
-                                                @foreach($two['children'] as $three )
-                                                    <li><a href="#">{{$three['name']}}</a></li>
-
-                                                @endforeach
-                                        @endif
-                                    @endforeach
+                                @foreach($one['children'] as $two )
+                                    <li><a href="#">{{$two['name']}}</a></li>
+                                    @if(!empty($two['children']))
+                                        @foreach($two['children'] as $three )
+                                            <li><a href="#">{{$three['name']}}</a></li>
+                                        @endforeach
+                                    @endif
+                                @endforeach
                             @endif
-                            </ul>
-
                         @endforeach
+
                     </ul>
-                </li>
+
+
+
+                </li>--}}
+
+
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -119,6 +199,5 @@
     <p>Footer Text</p>
 </footer>
 <script id="dsq-count-scr" src="//newssite-2.disqus.com/count.js" async></script>
-
 </body>
 </html>
