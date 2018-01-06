@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Advertising;
 use App\Categories;
+use App\Menu;
 use App\News;
 use App\ImageUploader;
 use App\NewsImages;
@@ -31,7 +32,9 @@ class MainController extends BaseController
         $categories = \App\Categories::all();
         $lastNewsSlide = News::query()->orderBy('id', 'desc')->take(5)->get();
 
-        return view('index', ['categories' => $categories, 'lastNewsSlide' => $lastNewsSlide, 'leftAdvertising' => $leftAdvertising, 'rightAdvertising' => $rightAdvertising]);
+        $parentMenu = Menu::getMenu();
+//        dd($parentMenu);
+        return view('index', ['categories' => $categories, 'lastNewsSlide' => $lastNewsSlide, 'leftAdvertising' => $leftAdvertising, 'rightAdvertising' => $rightAdvertising, 'parentMenu' => $parentMenu]);
     }
 
     public function userNewsViewPage($id)
@@ -322,5 +325,45 @@ class MainController extends BaseController
         $tag->delete();
 
         return \redirect(route('viewTag'));
+    }
+
+    //view page добавления нового пункта меню
+    public function adminVievAddMenu()
+    {
+        $listMenu = Menu::pluck('name');
+        return view('admin.menuAdd', ['listMenu' => $listMenu]);
+    }
+
+    //Action добавления нового пункта меню
+    public function adminActionAddMenu()
+    {
+        $data = $_POST;
+        Menu::create($data);
+
+
+        return \redirect(route('viewAddMenu'));
+    }
+
+    // view  меню
+    public function adminViewMenu()
+    {
+        $allMenu = Menu::all();
+        return view('admin.menu', ['allMenu' => $allMenu]);
+    }
+
+    // view редактирование меню
+    public function adminViewUpdateMenu($id)
+    {
+        $menu = Menu::find($id);
+        return view('admin.menuUpdate', ['menu'=> $menu]);
+
+    }
+
+    //Action редактирование меню
+    public function adminActionUpdateMenu()
+    {
+
+        return \redirect(route('viewMenu'));
+
     }
 }

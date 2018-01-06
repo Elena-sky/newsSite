@@ -21,7 +21,7 @@ Route::get('/news/{id}', 'MainController@userNewsViewPage')->name('newsViewPage'
 
 Route::get('/category/{id}', 'MainController@userCategoryViewPage')->name('categoryViewPage'); // обзор новостей в категории
 
-Route::get('/news/tag/{id}','MainController@userTagPage')->name('tagPage'); // обзор всех статей по 1 тегу
+Route::get('/news/tag/{id}', 'MainController@userTagPage')->name('tagPage'); // обзор всех статей по 1 тегу
 
 
 //Администрирование
@@ -61,7 +61,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/tag/update/save', 'MainController@adminActionUpdateTag')->name('actionUpdateTag'); //Action редактирование тега
     Route::get('/tag/delete/{id}', 'MainController@adminActionTagDelete')->name('actionTagDelete'); //Action удаление тега
 
-
+    //Многоуровневое меню
+    Route::get('/menu', 'MainController@adminViewMenu')->name('viewMenu'); // view  меню
+    Route::get('/menu/add', 'MainController@adminVievAddMenu')->name('viewAddMenu'); //view page добавления нового пункта меню
+    Route::post('/menu/add/save', 'MainController@adminActionAddMenu')->name('actionAddMenu'); //Action добавления нового пункта меню
+    Route::get('/menu/update/{id}', 'MainController@adminViewUpdateMenu')->name('viewUpdateMenu'); // view редактирование меню
+    Route::post('/menu/update/save', 'MainController@adminActionUpdateMenu')->name('actionUpdateMenu'); //Action редактирование меню
 
 });
 Auth::routes();

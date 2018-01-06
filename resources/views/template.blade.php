@@ -27,7 +27,9 @@
         }
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {height: 450px}
+        .row.content {
+            height: 450px
+        }
 
         /* Set gray background color and 100% height */
         .sidenav {
@@ -49,7 +51,10 @@
                 height: auto;
                 padding: 15px;
             }
-            .row.content {height:auto;}
+
+            .row.content {
+                height: auto;
+            }
         }
     </style>
 </head>
@@ -71,7 +76,35 @@
                 <li><a href="#">About</a></li>
                 <li><a href="#">Projects</a></li>
                 <li><a href="#">Contact</a></li>
+                <li class="dropdown">
+                    <button class="btn  dropdown-toggle" data-toggle="dropdown">Выпадающее меню
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+
+                        @foreach($parentMenu as $array =>$one)
+                            <li><a href="#">{{$one['name']}}</a></li>
+                            <ul class="dropdown-menu">
+
+                            @if(!empty($one['children']))
+
+                                    @foreach($one['children'] as $two )
+                                        <li><a href="#">{{$two['name']}}</a></li>
+                                        @if(!empty($two['children']))
+
+                                                @foreach($two['children'] as $three )
+                                                    <li><a href="#">{{$three['name']}}</a></li>
+
+                                                @endforeach
+                                        @endif
+                                    @endforeach
+                            @endif
+                            </ul>
+
+                        @endforeach
+                    </ul>
+                </li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>

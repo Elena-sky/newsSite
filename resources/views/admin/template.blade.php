@@ -88,17 +88,14 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-sitemap"></i>
-                    <span class="nav-link-text">Menu Levels</span>
+                    <span class="nav-link-text">Многоуровневое меню</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMulti">
                     <li>
-                        <a href="#">Second Level Item</a>
+                        <a href="{{route('viewAddMenu')}}">Создать пункт меню</a>
                     </li>
                     <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
+                        <a href="{{route('viewMenu')}}">Список меню</a>
                     </li>
                     <li>
                         <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
