@@ -157,30 +157,6 @@
                         </ul>
                     </div>
                 </li>
-                {{--<li><a href="#">Выпадающее меню <span class="caret"></span></a>
-                    <ul>
-
-                        @foreach($parentMenu as $array =>$one)
-                            <li><a href="#">{{$one['name']}}</a></li>
-                            @if(!empty($one['children']))
-
-                                @foreach($one['children'] as $two )
-                                    <li><a href="#">{{$two['name']}}</a></li>
-                                    @if(!empty($two['children']))
-                                        @foreach($two['children'] as $three )
-                                            <li><a href="#">{{$three['name']}}</a></li>
-                                        @endforeach
-                                    @endif
-                                @endforeach
-                            @endif
-                        @endforeach
-
-                    </ul>
-
-
-
-                </li>--}}
-
 
 
             </ul>
