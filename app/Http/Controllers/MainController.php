@@ -33,7 +33,6 @@ class MainController extends BaseController
         $lastNewsSlide = News::query()->orderBy('id', 'desc')->take(5)->get();
 
         $parentMenu = Menu::getMenu();
-//        dd($parentMenu);
         return view('index', ['categories' => $categories, 'lastNewsSlide' => $lastNewsSlide, 'leftAdvertising' => $leftAdvertising, 'rightAdvertising' => $rightAdvertising, 'parentMenu' => $parentMenu]);
     }
 
@@ -355,7 +354,11 @@ class MainController extends BaseController
     public function adminViewUpdateMenu($id)
     {
         $menu = Menu::find($id);
-        return view('admin.menuUpdate', ['menu'=> $menu]);
+
+        $parents = Menu::parents();
+        dd($parents);
+
+        return view('admin.menuUpdate', ['menu' => $menu]);
 
     }
 

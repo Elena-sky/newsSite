@@ -46,47 +46,45 @@ class Menu extends Model
 
             if (!empty($children)) {
                 foreach ($children as $child) {
-                    $childrenNextArray =[];
+                    $childrenNextArray = [];
                     $childrenArray[$child->id] = [
                         'id' => $child->id,
                         'name' => $child->name,
                         'children' => []
                     ];
 
-                   $childrenNext=$child->getChilds();
+                    $childrenNext = $child->getChilds();
 
-                   if(!empty($childrenNext)){
-                       foreach ($childrenNext as $next){
-                           $childrenNextArray[$next->id]=[
-                               'id' => $next->id,
-                               'name' => $next->name,
-                               'children' => []
-                           ];
-                           $childrenArray[$next->parent_id]['children'] = $childrenNextArray;
-                       }
-                   }
+                    if (!empty($childrenNext)) {
+                        foreach ($childrenNext as $next) {
+                            $childrenNextArray[$next->id] = [
+                                'id' => $next->id,
+                                'name' => $next->name,
+                                'children' => []
+                            ];
+                            $childrenArray[$next->parent_id]['children'] = $childrenNextArray;
+                        }
+                    }
                 }
 
             }
-           $menu[$parent->id]['children'] = $childrenArray;
+            $menu[$parent->id]['children'] = $childrenArray;
 
         }
 
         return $menu;
     }
 
-//    function printSubCategory($category, $oldPrefix = \'\')
-//{
-////    $prefix = $oldPrefix . \'--\';
-//    foreach ($category as $key
-//=> $item) {
-//        if ($key == \'title\') {
-//            echo $oldPrefix . \' \' . $item . \'<br/>\';
-//        } else {
-//            foreach ($item
-//as $simple) {
-//                printSubCategory($simple, \'--\' . $oldPrefix);
-//            }
-//        }
-//    }
+    public function getParent()
+    {
+        $parent = self::query()
+            ->where('parent_id', $this->id);
+        return $parent;
+    }
+
+    public static function parents()
+    {
+        $parent = self::getParent();
+        return $parent;
+    }
 }
