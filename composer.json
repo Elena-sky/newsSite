@@ -48,5 +48,14 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
+    },
+    "extra": {
+        "heroku": {
+            "compile": [
+                "chmod 777 /app/app/cache",
+                "chmod 777 /app/public/uploads",
+                "chmod 777 /app/public/uploads/news"
+            ]
+        }
     }
 }
