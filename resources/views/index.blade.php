@@ -191,16 +191,22 @@
                 <p>Lorem ipsum...</p>
             </div>
             <div class="col-sm-2 ">
-                @foreach($rightAdvertising as $advertising)
-                    <div class="well">
+                    @foreach($rightAdvertising as $advertising)
+                        <div class="well myHover">
+                            <p class="titleAd">{{$advertising->name}}</p>
+                            <br>
+                            <div class="price">Цена: {{$advertising->prise}} грн
+                                <div class="discount">Со скидкой - {{$advertising->prise*0.9}} грн</div>
+                            </div>
+                            <br>
 
-                        <p>{{$advertising->name}}</p>
-                        <br>
-                        {{$advertising->prise}}
-                        <br>
-                        <a href="{{$advertising->company}}">Купить можно здесь</a>
-                    </div>
-                @endforeach
+                            <div><a href="{{$advertising->company}}">Купить можно здесь</a></div>
+                            <br>
+                            <div class="coupon">
+                                <span>Купон на скидку  - {{rand(989070, 6989898)}} – примените и получите скидку 10%</span>
+                            </div>
+                        </div>
+                    @endforeach
             </div>
         </div>
     </div>
