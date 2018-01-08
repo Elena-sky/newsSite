@@ -40,9 +40,6 @@
 
                     @foreach ($newsByTag as $news)
                         <li>
-                            <div class="date">
-                                Дата
-                            </div>
                             <div class="title">
                                 <a href="{{route('newsViewPage',['id' => $news->id])}}">{{$news->name}}</a>
                             </div>
