@@ -27,7 +27,7 @@
                         <ul class="row first">
                             @foreach($images as $image)
                                 <li>
-                                    <img src="{{ asset("/uploads/news/$image->filename") }}" width="500px"
+                                    <img src="{{ secure_asset("/uploads/news/$image->filename") }}" width="500px"
                                          alt="{{$image->id}}">
                                 </li>
                             @endforeach

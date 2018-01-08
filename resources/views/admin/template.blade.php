@@ -9,13 +9,13 @@
     <meta name="author" content="">
     <title>SB Admin - Start Bootstrap Template</title>
     <!-- Bootstrap core CSS-->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom fonts for this template-->
-    <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{secure_asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
-    <link href="{{asset('css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/sb-admin.css')}}" rel="stylesheet">
 
 
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"--}}
@@ -236,38 +236,38 @@
         </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('js/jquery.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
+    <script src="{{secure_asset('js/jquery.js')}}"></script>
+    <script src="{{secure_asset('js/bootstrap.bundle.js')}}"></script>
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('js/jquery.easing.js')}}"></script>
+    <script src="{{secure_asset('js/jquery.easing.js')}}"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="{{asset('js/Chart.js')}}"></script>
-    <script src="{{asset('js/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
+    <script src="{{secure_asset('js/Chart.js')}}"></script>
+    <script src="{{secure_asset('js/jquery.dataTables.js')}}"></script>
+    <script src="{{secure_asset('js/dataTables.bootstrap4.js')}}"></script>
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('js/sb-admin.js')}}"></script>
+    <script src="{{secure_asset('js/sb-admin.js')}}"></script>
     <!-- Custom scripts for this page-->
-    <script src="{{asset('js/sb-admin-datatables.js')}}"></script>
+    <script src="{{secure_asset('js/sb-admin-datatables.js')}}"></script>
 
-    <script src="{{asset('js/sb-admin-charts.js')}}"></script>
+    <script src="{{secure_asset('js/sb-admin-charts.js')}}"></script>
 
 
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{secure_asset('jquery/jquery.min.js')}}"></script>
+    <script src="{{secure_asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{secure_asset('jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="{{asset('chart.js/Chart.min.js')}}"></script>
-    <script src="{{asset('datatables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('datatables/dataTables.bootstrap4.js')}}"></script>
+    <script src="{{secure_asset('chart.js/Chart.min.js')}}"></script>
+    <script src="{{secure_asset('datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{secure_asset('datatables/dataTables.bootstrap4.js')}}"></script>
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('js/sb-admin.min.js')}}"></script>
+    <script src="{{secure_asset('js/sb-admin.min.js')}}"></script>
     <!-- Custom scripts for this page-->
-    <script src="{{asset('js/sb-admin-datatables.min.js')}}"></script>
-    <script src="{{asset('js/sb-admin-charts.min.js')}}"></script>
+    <script src="{{secure_asset('js/sb-admin-datatables.min.js')}}"></script>
+    <script src="{{secure_asset('js/sb-admin-charts.min.js')}}"></script>
 
 </footer>
 </body>

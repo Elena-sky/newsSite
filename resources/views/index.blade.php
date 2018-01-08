@@ -133,7 +133,7 @@
                                             @if(!empty($news->newsImg) && isset($news->newsImg[0]))
 
                                                 <img style="width: 200px"
-                                                     src="{{ asset("/uploads/news/".$news->newsImg[0]->filename) }}"
+                                                     src="{{ secure_asset("/uploads/news/".$news->newsImg[0]->filename) }}"
                                                      alt="">
                                             @endif
                                         </div>
