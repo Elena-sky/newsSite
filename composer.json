@@ -56,7 +56,8 @@
                 "chmod -R 777 /app/storage",
                 "chmod -R 777 /app/bootstrap/cachee",
                 "chmod 777 /app/public/uploads",
-                "chmod 777 /app/public/uploads/news"
+                "chmod 777 /app/public/uploads/news",
+                "php artisan make:auth"
             ]
         }
     }
