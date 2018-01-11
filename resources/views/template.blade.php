@@ -161,7 +161,6 @@
                     </div>
                 </li>
 
-
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -172,7 +171,6 @@
 </nav>
 
 @yield('content')
-
 
 <footer class="container-fluid text-center">
     <p>Footer Text</p>
