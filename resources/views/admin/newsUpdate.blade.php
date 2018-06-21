@@ -50,7 +50,7 @@
                     <div class="col-sm-12">
                         @foreach($images as $image )
                             <div class="col-sm-4">
-                                <img src="{{ asset("/uploads/news/$image->filename") }}" width="200px"
+                                <img src="{{ secure_asset("/uploads/news/$image->filename") }}" width="200px"
                                      alt="{{$image->id}}">
                             </div>
                         @endforeach

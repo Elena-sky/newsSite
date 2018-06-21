@@ -52,26 +52,25 @@
     <div class="container-fluid text-center">
         <div class="row content">
             <div class="col-sm-2 ">
-                @foreach($leftAdvertising as $advertising)
-                    <div class="well myHover">
-                        <p class="titleAd">{{$advertising->name}}</p>
-                        <br>
-                        <div class="price">Цена: {{$advertising->prise}} грн
-                            <div class="discount">Со скидкой - {{$advertising->prise*0.9}} грн</div>
+                @if(!empty($leftAdvertising))
+                    @foreach($leftAdvertising as $advertising)
+                        <div class="well myHover">
+                            <p class="titleAd">{{$advertising->name}}</p>
+                            <br>
+                            <div class="price">Цена: {{$advertising->prise}} грн
+                                <div class="discount">Со скидкой - {{$advertising->prise*0.9}} грн</div>
+                            </div>
+                            <br>
+
+                            <div><a href="{{$advertising->company}}">Купить можно здесь</a></div>
+                            <br>
+                            <div class="coupon">
+                                <span>Купон на скидку  - {{rand(989070, 6989898)}}
+                                    – примените и получите скидку 10%</span>
+                            </div>
                         </div>
-                        <br>
-
-                        <div><a href="{{$advertising->company}}">Купить можно здесь</a></div>
-                        <br>
-                        <div class="coupon">
-                            <span>Купон на скидку  - {{rand(989070, 6989898)}} – примените и получите скидку 10%</span>
-                        </div>
-                    </div>
-
-
-
-                @endforeach
-
+                    @endforeach
+                @endif
 
             </div>
             <div class="col-sm-8 text-left">
@@ -96,7 +95,8 @@
                     {{--Всплывающее окно на закрытие сайта--}}
                     <div id="cls_ctnr">
                         <div id="cls_pop">
-                            <span class="cls_close" onclick="document.getElementById('cls_ctnr').style.display='none'; return false;">X</span>
+                            <span class="cls_close"
+                                  onclick="document.getElementById('cls_ctnr').style.display='none'; return false;">X</span>
                             <h4>Уведомление</h4>
                             Вы действительно хотите покинуть сайт?
                         </div>
@@ -133,7 +133,7 @@
                                             @if(!empty($news->newsImg) && isset($news->newsImg[0]))
 
                                                 <img style="width: 200px"
-                                                     src="{{ asset("/uploads/news/".$news->newsImg[0]->filename) }}"
+                                                     src="{{ secure_asset("/uploads/news/".$news->newsImg[0]->filename) }}"
                                                      alt="">
                                             @endif
                                         </div>
@@ -185,22 +185,31 @@
                     aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
                     officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
                 <hr>
                 <h3>Test</h3>
                 <p>Lorem ipsum...</p>
             </div>
             <div class="col-sm-2 ">
-                @foreach($rightAdvertising as $advertising)
-                    <div class="well">
+                @if(!empty($rightAdvertising))
+                    @foreach($rightAdvertising as $advertising)
+                        <div class="well myHover">
+                            <p class="titleAd">{{$advertising->name}}</p>
+                            <br>
+                            <div class="price">Цена: {{$advertising->prise}} грн
+                                <div class="discount">Со скидкой - {{$advertising->prise*0.9}} грн</div>
+                            </div>
+                            <br>
 
-                        <p>{{$advertising->name}}</p>
-                        <br>
-                        {{$advertising->prise}}
-                        <br>
-                        <a href="{{$advertising->company}}">Купить можно здесь</a>
-                    </div>
-                @endforeach
+                            <div><a href="{{$advertising->company}}">Купить можно здесь</a></div>
+                            <br>
+                            <div class="coupon">
+                                <span>Купон на скидку  - {{rand(989070, 6989898)}}
+                                    – примените и получите скидку 10%</span>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

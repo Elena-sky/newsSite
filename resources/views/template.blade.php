@@ -12,9 +12,9 @@
     {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--}}
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="{{asset('/js/jquery.cookie.js')}}"></script>
-    <link href="{{asset('/css/otherCss.css')}}" rel="stylesheet">
-    <script src="{{asset('/js/otherJs.js')}}"></script>
+    <script src="{{secure_asset('/js/jquery.cookie.js')}}"></script>
+    <link href="{{secure_asset('/css/otherCss.css')}}" rel="stylesheet">
+    <script src="{{secure_asset('/js/otherJs.js')}}"></script>
 
 
     {{--<script src="//yandex.st/jquery/cookie/1.0/jquery.cookie.min.js"></script>--}}
@@ -56,13 +56,14 @@
                 height: auto;
             }
         }
+
         /* here */
 
         .dropdown-submenu {
             position: relative;
         }
 
-        .dropdown-submenu>.dropdown-menu {
+        .dropdown-submenu > .dropdown-menu {
             top: 0;
             left: 100%;
             margin-top: -6px;
@@ -72,11 +73,11 @@
             border-radius: 0 6px 6px 6px;
         }
 
-        .dropdown-submenu:hover>.dropdown-menu {
+        .dropdown-submenu:hover > .dropdown-menu {
             display: block;
         }
 
-        .dropdown-submenu>a:after {
+        .dropdown-submenu > a:after {
             display: block;
             content: " ";
             float: right;
@@ -90,7 +91,7 @@
             margin-right: -10px;
         }
 
-        .dropdown-submenu:hover>a:after {
+        .dropdown-submenu:hover > a:after {
             border-left-color: #fff;
         }
 
@@ -98,7 +99,7 @@
             float: none;
         }
 
-        .dropdown-submenu.pull-left>.dropdown-menu {
+        .dropdown-submenu.pull-left > .dropdown-menu {
             left: -100%;
             margin-left: 10px;
             -webkit-border-radius: 6px 0 6px 6px;
@@ -127,37 +128,38 @@
                 <li><a href="#">Contact</a></li>
                 <li>
                     <div class="dropdown">
-                        <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" >
+                        <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary">
                             Dropdown <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                            @foreach($parentMenu as $one)
-                                @if(!empty($one['children']))
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">{{$one['name']}}</a>
-                                        <ul class="dropdown-menu">
-                                    @foreach($one['children'] as $two )
-                                                @if(!empty($two['children']))
-                                                    <li class="dropdown-submenu">
-                                                        <a href="#">{{$two['name']}}</a>
-                                                        <ul class="dropdown-menu">
-                                                    @foreach($two['children'] as $three )
-                                                        <li><a href="#">{{$three['name']}}</a></li>
-                                                    @endforeach
-                                                        </ul>
-                                                @endif
-                                    @endforeach
+                            @if(!empty($parentMenu))
+                                @foreach($parentMenu as $one)
+                                    @if(!empty($one['children']))
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">{{$one['name']}}</a>
+                                            <ul class="dropdown-menu">
+                                                @foreach($one['children'] as $two )
+                                                    @if(!empty($two['children']))
+                                                        <li class="dropdown-submenu">
+                                                            <a href="#">{{$two['name']}}</a>
+                                                            <ul class="dropdown-menu">
+                                                                @foreach($two['children'] as $three )
+                                                                    <li><a href="#">{{$three['name']}}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                    @endif
+                                                @endforeach
                                             </ul>
                                         </li>
-                                    <li class="divider"></li>
-                                @else
-                                    <li><a href="#">{{$one['name']}}</a></li>
-                                @endif
-                            @endforeach
+                                        <li class="divider"></li>
+                                    @else
+                                        <li><a href="#">{{$one['name']}}</a></li>
+                                    @endif
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </li>
-
 
             </ul>
 
@@ -169,7 +171,6 @@
 </nav>
 
 @yield('content')
-
 
 <footer class="container-fluid text-center">
     <p>Footer Text</p>
